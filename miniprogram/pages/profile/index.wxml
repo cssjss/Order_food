@@ -5,10 +5,12 @@
       <text class="profile-hero__shop">{{shop.name || '拾味小馆'}}</text>
     </view>
     <view class="profile-hero__user">
-      <button open-type="chooseAvatar" bindchooseavatar="avatar" class="profile-avatar" aria-label="设置头像">
-        <image wx:if="{{avatarUrl}}" src="{{avatarUrl}}" mode="aspectFill" />
-        <text wx:else>我</text>
-      </button>
+      <view class="profile-avatar-frame">
+        <button open-type="chooseAvatar" bindchooseavatar="avatar" class="profile-avatar" aria-label="设置头像">
+          <image wx:if="{{avatarUrl}}" src="{{avatarUrl}}" mode="aspectFill" />
+          <text wx:else>我</text>
+        </button>
+      </view>
       <view class="profile-hero__identity">
         <text class="profile-hero__role">{{isMerchant ? '商家账号 · 买家视图' : '买家账号'}}</text>
         <input type="nickname" placeholder="点击设置微信昵称" placeholder-class="profile-hero__placeholder" value="{{nickname}}" bindinput="name" bindblur="blurName" />

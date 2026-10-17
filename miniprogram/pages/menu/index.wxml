@@ -27,29 +27,31 @@
       <view wx:for="{{categories}}" wx:key="id" class="menu-category {{activeCategory === item.id ? 'menu-category--active' : ''}}" data-id="{{item.id}}" bindtap="category">{{item.name}}</view>
     </scroll-view>
 
-    <view class="menu-dishes">
-      <view wx:if="{{loading}}" class="menu-empty">正在加载菜品…</view>
-      <view wx:elif="{{!visible.length}}" class="menu-empty">
-        <text class="menu-empty__icon">✦</text>
-        <text>暂时没有找到菜品</text>
-        <button bindtap="resetFilters">查看全部菜品</button>
-      </view>
-      <view wx:for="{{visible}}" wx:key="id" class="menu-dish {{item.soldOut ? 'menu-dish--sold-out' : ''}}" data-id="{{item.id}}" bindtap="openProduct">
-        <view class="menu-dish__image">
-          <image wx:if="{{item.imageUrl}}" src="{{item.imageUrl}}" mode="aspectFill" />
-          <text wx:else>✦</text>
+    <scroll-view scroll-y class="menu-dishes">
+      <view class="menu-dishes__content">
+        <view wx:if="{{loading}}" class="menu-empty">正在加载菜品…</view>
+        <view wx:elif="{{!visible.length}}" class="menu-empty">
+          <text class="menu-empty__icon">✦</text>
+          <text>暂时没有找到菜品</text>
+          <button bindtap="resetFilters">查看全部菜品</button>
         </view>
-        <view class="menu-dish__body">
-          <text class="menu-dish__name">{{item.name}}</text>
-          <text class="menu-dish__desc">{{item.description || '现点现做 · 新鲜美味'}}</text>
-          <view class="menu-dish__bottom">
-            <text class="menu-dish__price">{{item.priceText}}</text>
-            <text wx:if="{{item.soldOut}}" class="menu-dish__sold-out">已售罄</text>
-            <text wx:else class="menu-dish__add">＋</text>
+        <view wx:for="{{visible}}" wx:key="id" class="menu-dish {{item.soldOut ? 'menu-dish--sold-out' : ''}}" data-id="{{item.id}}" bindtap="openProduct">
+          <view class="menu-dish__image">
+            <image wx:if="{{item.imageUrl}}" src="{{item.imageUrl}}" mode="aspectFill" />
+            <text wx:else>✦</text>
+          </view>
+          <view class="menu-dish__body">
+            <text class="menu-dish__name">{{item.name}}</text>
+            <text class="menu-dish__desc">{{item.description || '现点现做 · 新鲜美味'}}</text>
+            <view class="menu-dish__bottom">
+              <text class="menu-dish__price">{{item.priceText}}</text>
+              <text wx:if="{{item.soldOut}}" class="menu-dish__sold-out">已售罄</text>
+              <text wx:else class="menu-dish__add">＋</text>
+            </view>
           </view>
         </view>
       </view>
-    </view>
+    </scroll-view>
   </view>
 
   <view class="menu-cart" bindtap="openCart" aria-label="购物车">

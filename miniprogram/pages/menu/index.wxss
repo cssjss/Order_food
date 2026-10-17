@@ -1,8 +1,12 @@
 .menu-page {
-  min-height: 100vh;
-  padding: 34rpx 28rpx 160rpx;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  padding: 34rpx 28rpx 28rpx;
 }
 .menu-head {
+  flex: none;
   margin-bottom: 25rpx;
 }
 .menu-head text {
@@ -25,6 +29,7 @@
 }
 .menu-search {
   display: flex;
+  flex: none;
   align-items: center;
   gap: 14rpx;
   height: 82rpx;
@@ -48,6 +53,7 @@
   font-size: 23rpx;
 }
 .menu-history {
+  flex: none;
   padding: 20rpx;
   border-radius: 0 0 18rpx 18rpx;
   background: #fff;
@@ -73,6 +79,7 @@
 }
 .menu-section-head {
   display: flex;
+  flex: none;
   justify-content: space-between;
   align-items: center;
   margin: 37rpx 0 20rpx;
@@ -88,13 +95,15 @@
 }
 .menu-layout {
   display: flex;
-  align-items: flex-start;
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
   gap: 12rpx;
 }
 .menu-categories {
   flex: none;
   width: 142rpx;
-  height: 720rpx;
+  height: 100%;
   overflow: hidden;
   border-radius: 18rpx;
   background: #f0f5e9;
@@ -115,11 +124,16 @@
   font-weight: 700;
 }
 .menu-dishes {
-  display: flex;
   flex: 1;
+  min-width: 0;
+  height: 100%;
+}
+.menu-dishes__content {
+  display: flex;
   min-width: 0;
   flex-direction: column;
   gap: 13rpx;
+  padding-bottom: 12rpx;
 }
 .menu-dish {
   display: flex;
