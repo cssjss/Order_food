@@ -1,66 +1,81 @@
 <view class="profile-page">
   <view class="profile-hero">
-    <text class="profile-hero__top">我的 · 个人中心</text>
+    <view class="profile-hero__head">
+      <view><text>个人中心</text><text>我的账户</text></view>
+      <text class="profile-hero__shop">{{shop.name || '拾味小馆'}}</text>
+    </view>
     <view class="profile-hero__user">
       <button open-type="chooseAvatar" bindchooseavatar="avatar" class="profile-avatar" aria-label="设置头像">
         <image wx:if="{{avatarUrl}}" src="{{avatarUrl}}" mode="aspectFill" />
         <text wx:else>我</text>
       </button>
       <view class="profile-hero__identity">
+        <text class="profile-hero__role">{{isMerchant ? '商家账号 · 买家视图' : '买家账号'}}</text>
         <input type="nickname" placeholder="点击设置微信昵称" placeholder-class="profile-hero__placeholder" value="{{nickname}}" bindinput="name" bindblur="blurName" />
-        <text class="profile-hero__message">{{page.profileMessage}}</text>
+        <text class="profile-hero__message">{{page.profileMessage || '好好吃饭，认真生活'}}</text>
       </view>
     </view>
   </view>
 
-  <view class="profile-wallet card" bindtap="wallet">
-    <view><text>我的余额</text><text class="profile-wallet__amount">{{balanceText}}</text></view>
-    <text>充值与明细 →</text>
+  <button wx:if="{{isMerchant}}" class="profile-merchant-switch" bindtap="merchant">
+    <text>切换到商家工作台</text><text>→</text>
+  </button>
+
+  <view class="profile-wallet" bindtap="wallet">
+    <view class="profile-wallet__icon">¥</view>
+    <view class="profile-wallet__copy">
+      <text>钱包余额</text>
+      <text>{{balanceText}}</text>
+    </view>
+    <text class="profile-wallet__action">充值与明细 ›</text>
   </view>
 
-  <button wx:if="{{isMerchant}}" class="profile-merchant-switch" bindtap="merchant">切换到商家工作台 →</button>
-
-  <view class="profile-order card">
-    <view class="profile-order__head">
+  <view class="profile-section profile-order">
+    <view class="profile-section__head">
       <text>我的订单</text>
-      <text bindtap="orders">查看全部 →</text>
+      <text data-status="all" bindtap="orders">查看全部 ›</text>
     </view>
-    <view class="profile-order__shortcuts" bindtap="orders">
-      <view class="profile-order__shortcut">
-        <image src="../../assets/profile-clock.png" mode="aspectFit" />
+    <view class="profile-order__shortcuts">
+      <view class="profile-order__shortcut" data-status="pay" bindtap="orders">
+        <view class="profile-order__icon"><image src="../../assets/profile-clock.png" mode="aspectFit" /></view>
         <text>待付款</text>
       </view>
-      <view class="profile-order__shortcut">
-        <image src="../../assets/profile-steam.png" mode="aspectFit" />
+      <view class="profile-order__shortcut" data-status="making" bindtap="orders">
+        <view class="profile-order__icon"><image src="../../assets/profile-steam.png" mode="aspectFit" /></view>
         <text>待制作</text>
       </view>
-      <view class="profile-order__shortcut">
-        <image src="../../assets/profile-check.png" mode="aspectFit" />
+      <view class="profile-order__shortcut" data-status="done" bindtap="orders">
+        <view class="profile-order__icon"><image src="../../assets/profile-check.png" mode="aspectFit" /></view>
         <text>已完成</text>
       </view>
     </view>
   </view>
 
-  <view class="profile-links card">
+  <view class="profile-section profile-links">
+    <view class="profile-section__head"><text>常用服务</text></view>
     <view class="profile-links__row" bindtap="favorites">
       <image class="profile-links__icon" src="../../assets/profile-heart.png" mode="aspectFit" />
       <text class="profile-links__label">我的收藏</text>
-      <text class="profile-links__trailing">›</text>
+      <text class="profile-links__arrow">›</text>
     </view>
     <view class="profile-links__row" bindtap="phone">
       <image class="profile-links__icon" src="../../assets/profile-phone.png" mode="aspectFit" />
       <text class="profile-links__label">联系商家</text>
-      <text class="profile-links__trailing">›</text>
+      <text class="profile-links__arrow">›</text>
     </view>
-    <view class="profile-links__row">
-      <image class="profile-links__icon" src="../../assets/profile-pin.png" mode="aspectFit" />
-      <text class="profile-links__label">取餐地址</text>
-      <text class="profile-links__trailing profile-links__detail">{{shop.pickupAddress || '商家待设置'}}</text>
+  </view>
+
+  <view class="profile-section profile-shop">
+    <view class="profile-section__head"><text>到店信息</text></view>
+    <view class="profile-shop__row">
+      <image src="../../assets/profile-pin.png" mode="aspectFit" />
+      <text>取餐地址</text>
+      <text class="profile-shop__detail">{{shop.pickupAddress || '商家待设置'}}</text>
     </view>
-    <view class="profile-links__row">
-      <image class="profile-links__icon" src="../../assets/profile-clock.png" mode="aspectFit" />
-      <text class="profile-links__label">营业时间</text>
-      <text class="profile-links__trailing profile-links__detail">{{shop.hours}}</text>
+    <view class="profile-shop__row">
+      <image src="../../assets/profile-clock.png" mode="aspectFit" />
+      <text>营业时间</text>
+      <text class="profile-shop__detail">{{shop.hours || '商家待设置'}}</text>
     </view>
   </view>
   <view class="profile-footer">{{shop.name}} · 只做好每一餐</view>

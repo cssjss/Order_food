@@ -1,16 +1,37 @@
 {
   "pages": [
-    "pages/home/index", "pages/product/index", "pages/cart/index", "pages/checkout/index",
-    "pages/orders/index", "pages/order/index", "pages/profile/index", "pages/favorites/index", "pages/wallet/index",
-    "pages/merchant/index", "pages/merchant/order", "pages/merchant/profile"
+    "pages/home/index",
+    "pages/menu/index",
+    "pages/product/index",
+    "pages/cart/index",
+    "pages/checkout/index",
+    "pages/orders/index",
+    "pages/order/index",
+    "pages/profile/index",
+    "pages/favorites/index",
+    "pages/wallet/index",
+    "pages/merchant/index",
+    "pages/merchant/order",
+    "pages/merchant/profile"
   ],
-  "window": { "navigationBarTitleText": "拾味小馆", "navigationBarBackgroundColor": "#f9f7f2", "navigationBarTextStyle": "black", "backgroundColor": "#f9f7f2" },
-  "tabBar": { "color": "#8d9890", "selectedColor": "#d96744", "backgroundColor": "#ffffff", "borderStyle": "white", "list": [
-    { "pagePath": "pages/home/index", "text": "点餐" },
-    { "pagePath": "pages/cart/index", "text": "购物车" },
-    { "pagePath": "pages/orders/index", "text": "订单" },
-    { "pagePath": "pages/profile/index", "text": "我的" }
-  ] },
+  "window": {
+    "navigationBarTitleText": "拾味小馆",
+    "navigationBarBackgroundColor": "#f9f7f2",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f9f7f2"
+  },
+  "tabBar": {
+    "color": "#8d9890",
+    "selectedColor": "#d96744",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/home/index", "text": "首页" },
+      { "pagePath": "pages/menu/index", "text": "点餐" },
+      { "pagePath": "pages/cart/index", "text": "购物车" },
+      { "pagePath": "pages/profile/index", "text": "我的" }
+    ]
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

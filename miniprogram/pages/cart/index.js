@@ -94,6 +94,6 @@ Page({
     wx.navigateTo({ url: '/pages/checkout/index' });
   },
   goMenu() {
-    wx.switchTab({ url: '/pages/home/index' });
+    wx.switchTab({ url: '/pages/menu/index' });
   },
 });

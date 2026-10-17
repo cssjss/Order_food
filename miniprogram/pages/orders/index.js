@@ -19,8 +19,14 @@ Page({
     emptyText: '这里还没有订单',
     loading: true,
   },
+  onLoad(options = {}) {
+    const active = categories.some((category) => category.id === options.status)
+      ? options.status
+      : 'all';
+    this.setData({ active });
+  },
   onShow() {
-    this.setData({ active: 'all', loading: true });
+    this.setData({ loading: true });
     this.filter();
     this.load();
   },
@@ -52,13 +58,16 @@ Page({
     this.filter();
   },
   filter() {
-    const selected = categories.find((category) => category.id === this.data.active) || categories[0];
+    const selected =
+      categories.find((category) => category.id === this.data.active) || categories[0];
     const orders = this.data.orders;
     this.setData({
       tabs: categories.map(({ id, name, statuses }) => ({
         id,
         name,
-        count: statuses ? orders.filter((order) => statuses.includes(order.status)).length : orders.length,
+        count: statuses
+          ? orders.filter((order) => statuses.includes(order.status)).length
+          : orders.length,
       })),
       visible: orders.filter((order) => matches(selected, order)),
       emptyText: selected.id === 'all' ? '这里还没有订单' : `暂无${selected.name}订单`,
@@ -68,6 +77,6 @@ Page({
     wx.navigateTo({ url: `/pages/order/index?id=${e.currentTarget.dataset.id}` });
   },
   menu() {
-    wx.switchTab({ url: '/pages/home/index' });
+    wx.switchTab({ url: '/pages/menu/index' });
   },
 });

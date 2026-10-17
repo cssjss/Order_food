@@ -18,11 +18,7 @@ Page({
   async load() {
     try {
       const data = await store(true);
-      this.setData({
-        shop: data.shop,
-        page: data.page,
-        loading: false,
-      });
+      this.setData({ shop: data.shop, page: data.page });
       const profile = await request('/me', 'GET', null, true);
       this.setData({
         nickname: profile.nickname || '',
@@ -31,6 +27,7 @@ Page({
         savedName: profile.nickname || '',
         balanceText: yuan(profile.balance),
         isMerchant: !!profile.isMerchant,
+        loading: false,
       });
       getApp().globalData.isMerchant = !!profile.isMerchant;
     } catch (e) {
@@ -76,8 +73,9 @@ Page({
       toast(e.message);
     }
   },
-  orders() {
-    wx.switchTab({ url: '/pages/orders/index' });
+  orders(event) {
+    const status = event.currentTarget.dataset.status || 'all';
+    wx.navigateTo({ url: '/pages/orders/index?status=' + status });
   },
   favorites() {
     wx.navigateTo({ url: '/pages/favorites/index' });

@@ -1,16 +1,60 @@
-<view class="home-page" style="--home-accent:{{page.accent}}">
-  <view class="home-head"><view><text class="home-head__hello">欢迎光临 · 到店自取</text><text class="home-head__name">{{shop.name}}</text></view><view class="home-head__badge">现做 · 好味</view></view>
-  <view class="hero {{page.heroImage ? 'hero--image' : ''}}" style="background-image:{{page.heroImage ? 'linear-gradient(90deg,rgba(19,54,37,.66),rgba(19,54,37,.1)),url(' + imageBase + page.heroImage + ')' : ''}}"><text class="hero__subtitle">{{page.heroSubtitle}}</text><text class="hero__title">{{page.heroTitle}}</text><text class="hero__cta">从这里开始点餐 →</text></view>
-  <view class="store-strip"><text>◷ {{shop.hours}}</text><text>⌖ {{shop.pickupAddress || '到店自取'}}</text></view>
-  <view wx:if="{{page.showNotice && shop.notice}}" class="notice-strip"><text>店铺公告</text><text>{{shop.notice}}</text></view>
-  <view class="search-box"><text>⌕</text><input placeholder="搜索想吃的菜品" value="{{query}}" bindinput="search" bindfocus="focus" bindconfirm="submitSearch" confirm-type="search"/><text wx:if="{{query}}" bindtap="submitSearch">搜索</text></view>
-  <view wx:if="{{searchOpen && history.length}}" class="search-history"><view><text>历史搜索</text><text bindtap="clearHistory">清空</text></view><view class="search-history__words"><text wx:for="{{history}}" wx:key="*this" data-word="{{item}}" bindtap="historySearch">{{item}}</text></view></view>
-  <view wx:if="{{page.showFeatured && featured.length && !query}}" class="featured"><view class="section-head"><text>{{page.featuredTitle}}</text><text>鲜香好味</text></view><scroll-view scroll-x class="featured__scroll"><view class="featured__row"><view wx:for="{{featured}}" wx:key="id" class="featured-card" data-id="{{item.id}}" bindtap="openProduct"><view class="featured-card__image"><image wx:if="{{item.imageUrl}}" src="{{item.imageUrl}}" mode="aspectFill"/><text wx:else>✦</text></view><text class="featured-card__name">{{item.name}}</text><text class="price">{{item.priceText}}</text></view></view></scroll-view></view>
-  <view class="section-head"><text>全部菜品</text><text class="section-head__sub">挑一份喜欢的</text></view>
-  <view class="menu-layout"><scroll-view scroll-y class="category-rail"><view class="category-row"><view class="category-chip {{activeCategory === 0 ? 'category-chip--active' : ''}}" data-id="0" bindtap="category">全部</view><view wx:for="{{categories}}" wx:key="id" class="category-chip {{activeCategory === item.id ? 'category-chip--active' : ''}}" data-id="{{item.id}}" bindtap="category">{{item.name}}</view></view></scroll-view>
-    <view class="dish-list"><view wx:if="{{!visible.length && !loading}}" class="empty"><text class="empty-icon">✦</text><text>暂时没有找到菜品</text></view><view wx:for="{{visible}}" wx:key="id" class="dish-card {{item.soldOut ? 'dish-card--sold-out' : ''}}" data-id="{{item.id}}" bindtap="openProduct"><view class="dish-card__image"><image wx:if="{{item.imageUrl}}" src="{{item.imageUrl}}" mode="aspectFill"/><text wx:else>✦</text></view><view class="dish-card__content"><text class="dish-card__name">{{item.name}}</text><text class="dish-card__desc">{{item.description || '现点现做 · 新鲜美味'}}</text><view class="dish-card__bottom"><text class="price">{{item.priceText}}</text><text wx:if="{{item.soldOut}}" class="sold-out">已售罄</text><text wx:else class="dish-card__add">＋</text></view></view></view></view></view>
-  <view class="cart-float" bindtap="openCart" aria-label="购物车">
-    <image class="cart-float__icon" src="../../assets/home-cart.png" mode="aspectFit"/>
-    <view wx:if="{{cartCount > 0}}" class="cart-float__dot"></view>
+<view class="home-page" style="--home-accent:{{page.accent || '#78b93b'}}">
+  <view class="home-head">
+    <view>
+      <text class="home-head__hello">欢迎光临 · 到店自取</text>
+      <text class="home-head__name">{{shop.name}}</text>
+    </view>
+    <text class="home-head__badge">现做 · 好味</text>
+  </view>
+
+  <view class="home-hero {{page.heroImage ? 'home-hero--image' : ''}}" style="background-image:{{page.heroImage ? 'linear-gradient(90deg,rgba(19,54,37,.66),rgba(19,54,37,.1)),url(' + imageBase + page.heroImage + ')' : ''}}" bindtap="goMenu">
+    <text class="home-hero__subtitle">{{page.heroSubtitle}}</text>
+    <text class="home-hero__title">{{page.heroTitle}}</text>
+    <text class="home-hero__action">开始点餐 →</text>
+  </view>
+
+  <view class="home-store">
+    <text>◷ {{shop.hours}}</text>
+    <text>⌖ {{shop.pickupAddress || '到店自取'}}</text>
+  </view>
+  <view wx:if="{{page.showNotice && shop.notice}}" class="home-notice">
+    <text>店铺公告</text>
+    <text>{{shop.notice}}</text>
+  </view>
+
+  <view class="home-recommend">
+    <view class="home-recommend__head">
+      <view>
+        <text class="home-recommend__eyebrow">为你挑选</text>
+        <text class="home-recommend__title">{{page.featuredTitle || '今日推荐'}}</text>
+      </view>
+      <text class="home-recommend__more" bindtap="goMenu">全部菜品 →</text>
+    </view>
+
+    <view wx:if="{{page.showFeatured && featured.length}}" class="home-recommend__grid">
+      <view wx:for="{{featured}}" wx:key="id" class="home-dish" data-id="{{item.id}}" bindtap="openProduct">
+        <view class="home-dish__image">
+          <image wx:if="{{item.imageUrl}}" src="{{item.imageUrl}}" mode="aspectFill" />
+          <text wx:else>✦</text>
+        </view>
+        <view class="home-dish__body">
+          <text class="home-dish__name">{{item.name}}</text>
+          <text class="home-dish__desc">{{item.description || '现点现做 · 新鲜美味'}}</text>
+          <text class="home-dish__price">{{item.priceText}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:elif="{{!loading}}" class="home-recommend__empty">
+      <text>✦</text>
+      <text>推荐菜品正在准备中</text>
+      <text>更多好味可以在点餐页查看</text>
+      <button bindtap="goMenu">去点餐</button>
+    </view>
+    <view wx:else class="home-recommend__loading">正在加载推荐菜品…</view>
+  </view>
+
+  <view class="home-menu-link" bindtap="goMenu">
+    <view><text>想看看更多？</text><text>进入点餐页，按分类挑选喜欢的餐品</text></view>
+    <text class="home-menu-link__arrow">→</text>
   </view>
 </view>
