@@ -1,0 +1,31 @@
+<view class="page wallet-page">
+  <view class="wallet-balance">
+    <text>账户余额</text>
+    <text class="wallet-balance__amount">{{balanceText}}</text>
+    <text>可用于支付小程序订单</text>
+  </view>
+  <view class="card wallet-recharge">
+    <view class="wallet-section-title">余额充值</view>
+    <view class="wallet-presets">
+      <view wx:for="{{presets}}" wx:key="*this" data-amount="{{item}}" bindtap="chooseAmount" class="wallet-preset {{selectedPreset === item ? 'wallet-preset--selected' : ''}}">¥{{item}}</view>
+    </view>
+    <view class="wallet-custom"><text>其他金额</text><input type="digit" placeholder="输入 1–1000 元" value="{{customAmount}}" bindinput="customAmount"/></view>
+    <button class="btn wallet-recharge__button" disabled="{{busy}}" bindtap="recharge">{{busy ? '处理中…' : '微信支付充值'}}</button>
+    <text class="wallet-tip">微信支付成功并经系统确认后，余额会自动到账。</text>
+  </view>
+  <view wx:if="{{pendingTopups.length}}" class="card wallet-records">
+    <view class="wallet-section-title">待确认充值</view>
+    <view wx:for="{{pendingTopups}}" wx:key="id" class="wallet-record">
+      <view><text class="wallet-record__title">{{item.amountText}}</text><text>{{item.expired ? '支付时限已过，可查询最终结果' : '待支付或待到账'}}</text></view>
+      <button disabled="{{busy}}" data-id="{{item.id}}" bindtap="refreshTopup">查询结果</button>
+    </view>
+  </view>
+  <view class="card wallet-records">
+    <view class="wallet-section-title">余额明细</view>
+    <view wx:if="{{!entries.length && !loading}}" class="wallet-empty">暂无余额记录</view>
+    <view wx:for="{{entries}}" wx:key="id" class="wallet-record">
+      <view><text class="wallet-record__title">{{item.label}}</text><text>{{item.createdLabel}}</text><text wx:if="{{item.kind === 'ADMIN_DEBIT'}}">{{item.detail}}</text></view>
+      <text class="wallet-record__amount {{item.amount > 0 ? 'wallet-record__positive' : ''}}">{{item.amountText}}</text>
+    </view>
+  </view>
+</view>

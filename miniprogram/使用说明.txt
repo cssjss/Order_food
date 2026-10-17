@@ -1,0 +1,3 @@
+将 config.js 和 project.config.json 放入 miniprogram/ 目录，覆盖同名文件后在微信开发者工具上传正式版。
+请在微信公众平台将 https://order.testclf01.xyz 分别配置为 request、uploadFile 和 downloadFile 合法域名，并确保域名已备案且 HTTPS 可访问。
+修改 AppID 或初始请求域名后需要重新上传小程序。后台保存的 AppSecret、商户资料和支付回调配置在服务器即时生效。

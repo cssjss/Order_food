@@ -1,0 +1,34 @@
+<view class="orders-page">
+  <view class="orders-head">
+    <text>我的订单</text>
+    <text>每一餐的好滋味，都在这里</text>
+  </view>
+
+  <scroll-view scroll-x class="order-tabs" show-scrollbar="false">
+    <view class="order-tabs__list">
+      <view wx:for="{{tabs}}" wx:key="id" class="order-tabs__item {{active === item.id ? 'order-tabs__active' : ''}}" data-id="{{item.id}}" bindtap="tab">
+        <text>{{item.name}}</text>
+        <text class="order-tabs__count">{{item.count}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view wx:if="{{!visible.length && !loading}}" class="empty">
+    <text class="empty-icon">◷</text>
+    <text>{{emptyText}}</text>
+    <button wx:if="{{active === 'all'}}" class="btn" bindtap="menu">去点餐</button>
+    <button wx:else class="btn btn-ghost" data-id="all" bindtap="tab">查看全部订单</button>
+  </view>
+
+  <view class="order-list">
+    <view wx:for="{{visible}}" wx:key="id" class="order-card card" data-id="{{item.id}}" bindtap="open">
+      <view class="order-card__head"><text>{{item.createdLabel}}</text><text>{{item.statusLabel}}</text></view>
+      <view class="order-card__body">
+        <view class="order-card__image"><image wx:if="{{item.imageUrl}}" src="{{item.imageUrl}}" mode="aspectFill" /><text wx:else>✦</text></view>
+        <text class="order-card__summary">{{item.summary}}</text>
+      </view>
+      <view class="order-card__foot"><text>订单号 {{item.order_no}}</text><view><text>合计 </text><text>{{item.totalText}}</text></view></view>
+      <view class="order-card__action">查看订单 →</view>
+    </view>
+  </view>
+</view>

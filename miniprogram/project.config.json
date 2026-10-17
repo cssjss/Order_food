@@ -1,0 +1,13 @@
+{
+  "description": "单店到店自取点餐小程序",
+  "miniprogramRoot": "./",
+  "projectname": "pickup-ordering",
+  "appid": "wxab5680bc43312c47",
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": true,
+    "postcss": true
+  },
+  "isGameTourist": false
+}

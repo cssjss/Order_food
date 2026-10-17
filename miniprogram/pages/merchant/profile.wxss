@@ -1,0 +1,11 @@
+.merchant-profile { min-height: 100vh; padding: 0 28rpx 100rpx; }
+.merchant-profile__hero { margin: 0 -28rpx 24rpx; padding: 40rpx 30rpx; background: #244d3b; color: #fff; }
+.merchant-profile__hero > text { color: #bcd4c0; font-size: 23rpx; }
+.merchant-profile__hero view { display: flex; align-items: center; gap: 20rpx; margin-top: 36rpx; font-size: 34rpx; }
+.merchant-profile__hero image, .merchant-profile__avatar { display: flex; align-items: center; justify-content: center; flex: none; width: 88rpx; height: 88rpx; border-radius: 50%; background: #d59e7a; color: #fff; font-size: 36rpx; }
+.merchant-profile__name { font-weight: 700; }
+.merchant-profile__card { margin-bottom: 18rpx; }
+.merchant-profile__card > text { display: block; }
+.merchant-profile__card > text:first-child { font-size: 29rpx; font-weight: 700; }
+.merchant-profile__card > text:nth-child(2) { margin: 12rpx 0 25rpx; color: #839184; font-size: 23rpx; line-height: 1.6; }
+.merchant-profile__card .btn { width: 100%; }

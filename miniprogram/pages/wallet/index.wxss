@@ -1,0 +1,134 @@
+.wallet-page {
+  padding-bottom: 155rpx;
+}
+.wallet-balance {
+  display: flex;
+  flex-direction: column;
+  gap: 13rpx;
+  padding: 45rpx 37rpx;
+  margin-bottom: 20rpx;
+  border-radius: 24rpx;
+  background: #244d3b;
+  color: #d3e1d4;
+}
+.wallet-balance text {
+  font-size: 23rpx;
+}
+.wallet-balance .wallet-balance__amount {
+  color: #fff;
+  font-size: 56rpx;
+  line-height: 1.25;
+}
+.wallet-recharge,
+.wallet-records {
+  margin-bottom: 20rpx;
+}
+.wallet-section-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  margin-bottom: 20rpx;
+}
+.wallet-presets {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15rpx;
+}
+.wallet-preset {
+  height: 78rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx solid #e2e9df;
+  border-radius: 14rpx;
+  font-size: 29rpx;
+  font-weight: 700;
+}
+.wallet-preset--selected {
+  border-color: #79b84c;
+  background: #eff7e8;
+  color: #4f913d;
+}
+.wallet-custom {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  margin: 25rpx 0;
+  font-size: 24rpx;
+}
+.wallet-custom text {
+  flex: none;
+}
+.wallet-custom input {
+  flex: 1;
+  min-width: 0;
+  height: 66rpx;
+  padding: 0 17rpx;
+  border-radius: 12rpx;
+  background: #f5f7f2;
+}
+.wallet-recharge__button {
+  width: 100%;
+}
+.wallet-tip {
+  display: block;
+  margin-top: 16rpx;
+  color: #8c998c;
+  font-size: 21rpx;
+  line-height: 1.5;
+}
+.wallet-record {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18rpx;
+  padding: 17rpx 0;
+  border-top: 1rpx solid #eff1ed;
+}
+.wallet-record > view {
+  flex: 1;
+  min-width: 0;
+}
+.wallet-record > view text {
+  display: block;
+}
+.wallet-record__title,
+.wallet-record__amount {
+  font-size: 24rpx;
+  font-weight: 700;
+}
+.wallet-record > view text {
+  margin-top: 6rpx;
+  color: #9aa79a;
+  font-size: 20rpx;
+}
+.wallet-record > view .wallet-record__title {
+  margin-top: 0;
+  color: #263b31;
+  font-size: 24rpx;
+}
+.wallet-record__amount {
+  flex: none;
+}
+.wallet-record > button {
+  flex: none;
+  margin: 0;
+  padding: 0 15rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  border-radius: 10rpx;
+  background: #e9f4e2;
+  color: #518c3e;
+  font-size: 21rpx;
+}
+.wallet-record > button::after {
+  border: 0;
+}
+.wallet-record__positive {
+  color: #348252;
+}
+.wallet-empty {
+  padding: 30rpx 0;
+  text-align: center;
+  color: #9aa79a;
+  font-size: 23rpx;
+}

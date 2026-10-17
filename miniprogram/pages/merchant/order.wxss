@@ -1,0 +1,19 @@
+.merchant-detail { min-height: 100vh; padding: 28rpx 28rpx 100rpx; }
+.merchant-detail__message { padding: 65rpx 25rpx; color: #7f8d80; text-align: center; }
+.merchant-detail__status { display: flex; flex-direction: column; gap: 9rpx; margin-bottom: 20rpx; padding: 32rpx; border-radius: 24rpx; background: #244d3b; color: #c6dfcc; font-size: 22rpx; }
+.merchant-detail__status-name { color: #fff; font-size: 39rpx; font-weight: 700; }
+.merchant-detail__card { margin-bottom: 18rpx; }
+.merchant-detail__title { margin-bottom: 16rpx; font-size: 28rpx; font-weight: 700; }
+.merchant-detail__item, .merchant-detail__total, .merchant-detail__meta { display: flex; justify-content: space-between; gap: 20rpx; padding: 16rpx 0; border-top: 1rpx solid #eff2ed; font-size: 24rpx; }
+.merchant-detail__item view { min-width: 0; }
+.merchant-detail__item view text { display: block; }
+.merchant-detail__item view text:last-child { margin-top: 6rpx; color: #9ba69c; font-size: 21rpx; }
+.merchant-detail__item > text, .merchant-detail__total text:last-child { flex: none; font-weight: 700; }
+.merchant-detail__total { font-weight: 700; }
+.merchant-detail__total text:last-child { color: #63a24a; font-size: 30rpx; }
+.merchant-detail__meta text:first-child { flex: none; color: #8e9b8f; }
+.merchant-detail__meta text:last-child { text-align: right; word-break: break-all; }
+.merchant-detail__card textarea { width: 100%; min-height: 130rpx; padding: 18rpx; border: 1rpx solid #e0e8de; border-radius: 14rpx; font-size: 24rpx; }
+.merchant-detail__hint { display: block; margin-top: 12rpx; color: #a47756; font-size: 21rpx; }
+.merchant-detail__actions { display: flex; flex-direction: column; gap: 14rpx; }
+.merchant-detail__actions .btn { width: 100%; margin: 0; }

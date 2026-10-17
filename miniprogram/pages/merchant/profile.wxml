@@ -1,0 +1,5 @@
+<view class="merchant-profile">
+  <view class="merchant-profile__hero"><text>商家个人中心</text><view><image wx:if="{{avatarUrl}}" src="{{avatarUrl}}" mode="aspectFill" /><text wx:else class="merchant-profile__avatar">商</text><text class="merchant-profile__name">{{nickname || '正在加载…'}}</text></view></view>
+  <view class="card merchant-profile__card"><text>商家工作台</text><text>查看全店订单，处理接单、制作、取餐和小票。</text><button class="btn" bindtap="orders">返回订单工作台</button></view>
+  <view class="card merchant-profile__card"><text>切换身份</text><text>切换后可按普通买家身份点餐、查看自己的订单和余额。</text><button class="btn btn-ghost" bindtap="buyer">切换为买家</button></view>
+</view>

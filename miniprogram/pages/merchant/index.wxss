@@ -1,0 +1,27 @@
+.merchant-page { min-height: 100vh; padding: 28rpx 28rpx 120rpx; }
+.merchant-head { display: flex; align-items: center; justify-content: space-between; gap: 20rpx; }
+.merchant-head__eyebrow, .merchant-head__title { display: block; }
+.merchant-head__eyebrow { color: #79a785; font-size: 22rpx; }
+.merchant-head__title { margin-top: 6rpx; font-size: 42rpx; font-weight: 700; }
+.merchant-head__profile { margin: 0; padding: 12rpx 22rpx; border: 0; border-radius: 100rpx; background: #e8f3e8; color: #286044; font-size: 24rpx; }
+.merchant-head__profile::after { border: 0; }
+.merchant-note { margin: 18rpx 0 26rpx; color: #8b998d; font-size: 22rpx; }
+.merchant-tabs { white-space: nowrap; margin-bottom: 22rpx; }
+.merchant-tabs__list { display: inline-flex; gap: 12rpx; }
+.merchant-tabs__item { flex: none; padding: 14rpx 20rpx; border: 1rpx solid #e4ebe3; border-radius: 100rpx; background: #fff; color: #66796b; font-size: 23rpx; }
+.merchant-tabs__item text { margin-left: 6rpx; font-size: 20rpx; }
+.merchant-tabs__item--active { border-color: #286044; background: #286044; color: #fff; }
+.merchant-empty { padding: 80rpx 24rpx; text-align: center; color: #7d8c7e; }
+.merchant-empty text { display: block; margin-bottom: 12rpx; }
+.merchant-empty .btn { margin-top: 20rpx; }
+.merchant-order { margin-bottom: 18rpx; padding: 24rpx; }
+.merchant-order__head, .merchant-order__foot { display: flex; align-items: center; justify-content: space-between; gap: 16rpx; }
+.merchant-order__head text:first-child { color: #388158; font-weight: 700; }
+.merchant-order__head text:last-child { color: #9ba79b; font-size: 21rpx; }
+.merchant-order__body { display: flex; align-items: center; gap: 18rpx; margin: 20rpx 0; }
+.merchant-order__image { display: flex; align-items: center; justify-content: center; flex: none; width: 108rpx; height: 108rpx; overflow: hidden; border-radius: 14rpx; background: #eff5e9; color: #8fb875; font-size: 38rpx; }
+.merchant-order__image image { width: 100%; height: 100%; }
+.merchant-order__summary { display: block; flex: 1; min-width: 0; font-size: 27rpx; font-weight: 700; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.merchant-order__foot { color: #8c9a8e; font-size: 20rpx; }
+.merchant-order__amount { color: #273f31; font-size: 28rpx; font-weight: 700; }
+.merchant-order__open { display: block; margin-top: 18rpx; padding-top: 14rpx; border-top: 1rpx solid #edf1ec; color: #388158; font-size: 23rpx; text-align: right; }

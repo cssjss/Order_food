@@ -1,0 +1,26 @@
+<view class="merchant-page">
+  <view class="merchant-head">
+    <view><text class="merchant-head__eyebrow">商家工作台</text><text class="merchant-head__title">订单处理</text></view>
+    <button class="merchant-head__profile" bindtap="profile">我的 ›</button>
+  </view>
+  <view class="merchant-note">新订单每 15 秒更新，也可下拉刷新。</view>
+  <scroll-view scroll-x class="merchant-tabs" show-scrollbar="false">
+    <view class="merchant-tabs__list">
+      <view wx:for="{{tabs}}" wx:key="id" class="merchant-tabs__item {{active === item.id ? 'merchant-tabs__item--active' : ''}}" data-id="{{item.id}}" bindtap="tab">{{item.name}} <text>{{item.count}}</text></view>
+    </view>
+  </scroll-view>
+  <view wx:if="{{error}}" class="merchant-empty card"><text>{{error}}</text><button class="btn btn-ghost" bindtap="retry">重试</button></view>
+  <view wx:elif="{{!visible.length && !loading}}" class="merchant-empty card"><text>当前分类暂无订单</text><text>有新订单时会出现在这里</text></view>
+  <view wx:elif="{{loading}}" class="merchant-empty card">正在加载订单…</view>
+  <view wx:else class="merchant-list">
+    <view wx:for="{{visible}}" wx:key="id" class="merchant-order card" data-id="{{item.id}}" bindtap="open">
+      <view class="merchant-order__head"><text>{{item.statusLabel}}</text><text>{{item.timeLabel}}</text></view>
+      <view class="merchant-order__body">
+        <view class="merchant-order__image"><image wx:if="{{item.imageUrl}}" src="{{item.imageUrl}}" mode="aspectFill" /><text wx:else>✦</text></view>
+        <text class="merchant-order__summary">{{item.summary}}</text>
+      </view>
+      <view class="merchant-order__foot"><text>订单号 {{item.order_no}}</text><text class="merchant-order__amount">{{item.amountText}}</text></view>
+      <text class="merchant-order__open">查看并处理 →</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,124 @@
+.orders-page {
+  padding: 31rpx 28rpx 150rpx;
+}
+.orders-head {
+  margin-bottom: 32rpx;
+}
+.orders-head text {
+  display: block;
+}
+.orders-head text:first-child {
+  font-size: 41rpx;
+  font-weight: 700;
+}
+.orders-head text:last-child {
+  font-size: 22rpx;
+  color: #a1aca2;
+  margin-top: 8rpx;
+}
+.order-tabs {
+  white-space: nowrap;
+  margin-bottom: 22rpx;
+}
+.order-tabs__list {
+  display: inline-flex;
+  gap: 14rpx;
+}
+.order-tabs__item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  flex: none;
+  font-size: 24rpx;
+  color: #718075;
+  padding: 15rpx 20rpx;
+  border: 1rpx solid #e7ede3;
+  border-radius: 100rpx;
+  background: #fff;
+}
+.order-tabs__active {
+  color: #fff;
+  font-weight: 700;
+  border-color: #78b93b;
+  background: #78b93b;
+}
+.order-tabs__count {
+  min-width: 24rpx;
+  text-align: center;
+  font-size: 20rpx;
+  color: #9ba99c;
+}
+.order-tabs__active .order-tabs__count {
+  color: #fff;
+}
+.orders-page .empty .btn {
+  font-size: 25rpx;
+  margin-top: 25rpx;
+}
+.order-card {
+  margin-bottom: 19rpx;
+  padding: 24rpx;
+}
+.order-card__head,
+.order-card__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order-card__head {
+  font-size: 22rpx;
+  color: #9da89d;
+}
+.order-card__head text:last-child {
+  color: #78b93b;
+  font-weight: 700;
+}
+.order-card__body {
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+  margin: 22rpx 0;
+}
+.order-card__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 108rpx;
+  height: 108rpx;
+  overflow: hidden;
+  border-radius: 14rpx;
+  background: #eff5e9;
+  color: #8fb875;
+  font-size: 38rpx;
+}
+.order-card__image image {
+  width: 100%;
+  height: 100%;
+}
+.order-card__summary {
+  flex: 1;
+  min-width: 0;
+  font-size: 27rpx;
+  font-weight: 700;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.order-card__foot {
+  color: #a0aca0;
+  font-size: 20rpx;
+  padding-bottom: 17rpx;
+  border-bottom: 1rpx solid #f0f2ee;
+}
+.order-card__foot view text:last-child {
+  color: #2d3d32;
+  font-size: 26rpx;
+  font-weight: 700;
+}
+.order-card__action {
+  text-align: right;
+  font-size: 22rpx;
+  color: #78b93b;
+  margin-top: 16rpx;
+}

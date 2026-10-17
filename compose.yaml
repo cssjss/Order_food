@@ -1,0 +1,14 @@
+services:
+  order-food:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      MOCK_PAYMENT: "false"
+      DATABASE_FILE: ./data/orders.sqlite
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - ./data:/app/data
+      - ./uploads:/app/uploads

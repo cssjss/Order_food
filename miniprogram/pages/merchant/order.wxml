@@ -1,0 +1,32 @@
+<view class="merchant-detail">
+  <view wx:if="{{error}}" class="card merchant-detail__message">{{error}}</view>
+  <view wx:elif="{{loading}}" class="card merchant-detail__message">正在加载订单…</view>
+  <block wx:elif="{{order}}">
+    <view class="merchant-detail__status"><text>订单状态</text><text class="merchant-detail__status-name">{{statusLabel}}</text><text>订单号 {{order.order_no}}</text></view>
+    <view class="card merchant-detail__card">
+      <view class="merchant-detail__title">菜品清单</view>
+      <view wx:for="{{items}}" wx:key="lineKey" class="merchant-detail__item"><view><text>{{item.name}} ×{{item.quantity}}</text><text wx:if="{{item.options_label}}">{{item.options_label}}</text></view><text>{{item.amountText}}</text></view>
+      <view class="merchant-detail__total"><text>订单金额</text><text>{{amountText}}</text></view>
+    </view>
+    <view class="card merchant-detail__card">
+      <view class="merchant-detail__title">订单信息</view>
+      <view class="merchant-detail__meta"><text>下单时间</text><text>{{createdLabel}}</text></view>
+      <view class="merchant-detail__meta"><text>订单备注</text><text>{{order.remark || '无'}}</text></view>
+      <view class="merchant-detail__meta"><text>支付方式</text><text>{{order.payment_method === 'balance' ? '余额支付' : '微信支付'}}</text></view>
+      <view wx:if="{{order.refund_note}}" class="merchant-detail__meta"><text>退款说明</text><text>{{order.refund_note}}</text></view>
+    </view>
+    <view wx:if="{{order.status === 'PENDING_ACCEPTANCE' || order.status === 'REFUND_PENDING'}}" class="card merchant-detail__card">
+      <view class="merchant-detail__title">{{order.status === 'PENDING_ACCEPTANCE' ? '拒单原因' : '退款凭证或说明'}}</view>
+      <textarea value="{{reason}}" maxlength="300" placeholder="{{order.status === 'PENDING_ACCEPTANCE' ? '拒单时填写原因' : '填写微信商户平台退款凭证'}}" bindinput="reason" />
+      <text class="merchant-detail__hint">{{order.status === 'PENDING_ACCEPTANCE' && order.payment_method !== 'balance' ? '微信支付拒单后需在微信商户平台手工退款。' : ''}}</text>
+    </view>
+    <view class="merchant-detail__actions">
+      <button wx:if="{{order.status === 'PENDING_ACCEPTANCE'}}" class="btn" disabled="{{busy}}" data-action="accept" bindtap="act">接单并开始制作</button>
+      <button wx:if="{{order.status === 'PREPARING'}}" class="btn" disabled="{{busy}}" data-action="ready" bindtap="act">标记制作完成</button>
+      <button wx:if="{{order.status === 'READY'}}" class="btn" disabled="{{busy}}" data-action="complete" bindtap="act">确认订单完结</button>
+      <button wx:if="{{order.status === 'REFUND_PENDING'}}" class="btn" disabled="{{busy}}" data-action="refunded" bindtap="act">确认已退款</button>
+      <button wx:if="{{order.status === 'PENDING_ACCEPTANCE'}}" class="btn btn-ghost" disabled="{{busy}}" data-action="reject" bindtap="act">拒绝订单</button>
+      <button wx:if="{{order.paid_at}}" class="btn btn-ghost" disabled="{{busy}}" bindtap="print">重发小票</button>
+    </view>
+  </block>
+</view>

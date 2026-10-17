@@ -1,0 +1,20 @@
+{
+  "name": "pickup-ordering",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "server",
+    "admin"
+  ],
+  "scripts": {
+    "dev": "concurrently -k \"npm run dev -w server\" \"npm run dev -w admin\"",
+    "build": "npm run build -w admin",
+    "start": "npm run start -w server",
+    "test": "npm run test -w server",
+    "format": "prettier --write admin/src server/src server/test miniprogram/app.js miniprogram/config.js miniprogram/utils miniprogram/pages/*/index.js && prettier --parser css --write 'miniprogram/**/*.wxss'"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "prettier": "^3.9.10"
+  }
+}

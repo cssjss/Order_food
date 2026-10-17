@@ -1,0 +1,135 @@
+.cart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 9rpx 0 32rpx;
+}
+.cart-head > view text {
+  display: block;
+}
+.cart-title {
+  font-size: 43rpx;
+  font-weight: 700;
+}
+.cart-sub {
+  font-size: 23rpx;
+  color: #a0aa9f;
+  margin-top: 8rpx;
+}
+.cart-head > text {
+  color: #9ca89c;
+  font-size: 24rpx;
+}
+.cart-page .empty .btn {
+  margin-top: 25rpx;
+  font-size: 25rpx;
+}
+.cart-line {
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+  margin-bottom: 17rpx;
+  padding: 19rpx;
+  position: relative;
+}
+.cart-line__check {
+  width: 36rpx;
+  height: 36rpx;
+  flex: none;
+  border: 2rpx solid #cad4c9;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 22rpx;
+}
+.cart-line__check--on {
+  background: #78b93b;
+  border-color: #78b93b;
+}
+.cart-line__image {
+  width: 139rpx;
+  height: 139rpx;
+  flex: none;
+  background: #eee9db;
+  border-radius: 12rpx;
+  display: grid;
+  place-items: center;
+  color: #d7c9ae;
+}
+.cart-line__image image {
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
+}
+.cart-line__body {
+  flex: 1;
+  min-width: 0;
+}
+.cart-line__name {
+  font-weight: 700;
+  font-size: 26rpx;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 24rpx;
+}
+.cart-line__spec {
+  display: inline-block;
+  color: #8b9a8c;
+  background: #f4f6f1;
+  border-radius: 7rpx;
+  padding: 7rpx 9rpx;
+  margin: 10rpx 0;
+  font-size: 20rpx;
+}
+.cart-line__warning {
+  display: block;
+  font-size: 20rpx;
+  color: #c56345;
+}
+.cart-line__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cart-line__step {
+  display: flex;
+  gap: 14rpx;
+  align-items: center;
+  font-size: 25rpx;
+}
+.cart-line__step text:first-child,
+.cart-line__step text:last-child {
+  width: 34rpx;
+  height: 34rpx;
+  border-radius: 50%;
+  background: #f1f3ed;
+  display: grid;
+  place-items: center;
+}
+.cart-line__remove {
+  position: absolute;
+  right: 18rpx;
+  top: 9rpx;
+  color: #b1bbb0;
+  font-size: 31rpx;
+}
+.cart-hint {
+  font-size: 22rpx;
+  color: #a1aca1;
+  line-height: 1.7;
+  padding: 13rpx;
+}
+.cart-select {
+  white-space: nowrap;
+  color: #738175;
+  font-size: 24rpx;
+}
+.bottom-bar__total {
+  min-width: 150rpx;
+}
+.bottom-bar .btn {
+  padding: 22rpx 26rpx;
+}

@@ -1,0 +1,19 @@
+<view class="page checkout-page">
+  <view class="checkout-title">确认订单</view>
+  <view class="pickup card"><view class="pickup__badge">⌖</view><view><text>到店自取</text><text>{{shop.name}} · {{shop.hours}}</text><text>{{shop.pickupAddress || '请联系商家确认取餐地址'}}</text></view></view>
+  <view class="checkout-section card">
+    <view class="checkout-section__head"><text>菜品清单</text><text>共 {{lines.length}} 种</text></view>
+    <view wx:for="{{lines}}" wx:key="key" class="checkout-line"><view><text>{{item.name}} ×{{item.quantity}}</text><text>{{item.label}}</text></view><text>{{item.priceText}}</text></view>
+    <view class="checkout-total"><text>商品金额</text><text>{{total}}</text></view>
+    <view class="checkout-total checkout-total--final"><text>实付金额</text><text class="price">{{total}}</text></view>
+  </view>
+  <view class="checkout-section card">
+    <view class="checkout-section__head"><text>支付方式</text></view>
+    <view class="checkout-payment {{payMethod === 'wechat' ? 'checkout-payment--selected' : ''}}" data-method="wechat" bindtap="choosePayment"><view><strong>微信支付</strong><text>{{payment === 'unavailable' ? '商家暂未开通' : '使用微信支付订单金额'}}</text></view><text>{{payMethod === 'wechat' ? '●' : '○'}}</text></view>
+    <view class="checkout-payment {{payMethod === 'balance' ? 'checkout-payment--selected' : ''}}" data-method="balance" bindtap="choosePayment"><view><strong>余额支付</strong><text>当前余额 {{balanceText}}{{balanceEnough ? '' : '，余额不足'}}</text></view><text>{{payMethod === 'balance' ? '●' : '○'}}</text></view>
+    <text wx:if="{{!balanceEnough}}" class="checkout-wallet-link" bindtap="goWallet">余额不足？前往充值 →</text>
+  </view>
+  <view class="checkout-section card"><view class="checkout-section__head"><text>订单备注</text><text>选填</text></view><textarea maxlength="300" placeholder="口味要求、特殊需求等" value="{{remark}}" bindinput="remark"/></view>
+  <view class="checkout-note">{{shop.pickupGuide}}</view>
+  <view class="bottom-bar"><view class="bottom-bar__total"><text class="muted">需支付</text><strong class="price">{{total}}</strong></view><button class="btn" disabled="{{busy || (payMethod === 'wechat' && payment === 'unavailable') || (payMethod === 'balance' && !balanceEnough)}}" bindtap="submit">{{busy ? '提交中…' : '提交并支付'}}</button></view>
+</view>

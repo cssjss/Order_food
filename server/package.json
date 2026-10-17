@@ -1,0 +1,11 @@
+{
+  "name": "@pickup/server",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": { "dev": "node --env-file-if-exists=../.env --watch src/index.js", "start": "node --env-file-if-exists=../.env src/index.js", "test": "node --test" },
+  "dependencies": {
+    "fflate": "^0.8.2",
+    "express": "^5.1.0",
+    "multer": "^2.0.2"
+  }
+}
